@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test
 
 @QuarkusTest
 class ExampleResourceTest {
-
     @Test
     fun testHelloEndpoint() {
         given()
@@ -16,5 +15,4 @@ class ExampleResourceTest {
             .statusCode(200)
             .body(`is`("Hello from Quarkus REST"))
     }
-
 }

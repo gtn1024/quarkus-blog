@@ -1,8 +1,17 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
+buildscript {
+    dependencies {
+        classpath(libs.flyway.postgresql)
+    }
+}
+
 plugins {
-    kotlin("jvm") version "2.0.0"
-    kotlin("plugin.allopen") version "2.0.0"
-    kotlin("plugin.serialization") version "2.0.0"
-    id("io.quarkus")
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.plugin.allopen)
+    alias(libs.plugins.quarkus)
+    alias(libs.plugins.flyway)
+    alias(libs.plugins.ktlint)
 }
 
 repositories {
@@ -10,18 +19,15 @@ repositories {
     mavenLocal()
 }
 
-val quarkusPlatformGroupId: String by project
-val quarkusPlatformArtifactId: String by project
-val quarkusPlatformVersion: String by project
-
 dependencies {
-    implementation(enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}"))
+    implementation(enforcedPlatform(libs.quarkus.bom))
     implementation("io.quarkus:quarkus-rest")
     implementation("io.quarkus:quarkus-flyway")
+    implementation("org.flywaydb:flyway-database-postgresql")
     implementation("io.quarkus:quarkus-hibernate-orm-panache-kotlin")
     implementation("io.quarkus:quarkus-kotlin")
     implementation("io.quarkus:quarkus-jdbc-postgresql")
-    implementation("io.quarkus:quarkus-rest-kotlin-serialization")
+    implementation("io.quarkus:quarkus-rest-jackson")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("io.quarkus:quarkus-arc")
     implementation("io.quarkus:quarkus-hibernate-orm")
@@ -44,10 +50,20 @@ allOpen {
     annotation("jakarta.ws.rs.Path")
     annotation("jakarta.enterprise.context.ApplicationScoped")
     annotation("jakarta.persistence.Entity")
+    annotation("jakarta.persistence.MappedSuperclass")
     annotation("io.quarkus.test.junit.QuarkusTest")
 }
 
-tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-    kotlinOptions.jvmTarget = JavaVersion.VERSION_21.toString()
-    kotlinOptions.javaParameters = true
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.JVM_21
+        javaParameters = true
+    }
+}
+
+flyway {
+    url = "jdbc:postgresql://localhost:54321/blog"
+    user = System.getenv("PG_USER") ?: "blog"
+    password = System.getenv("PG_PASSWORD") ?: "123456"
+    schemas = arrayOf("public")
 }

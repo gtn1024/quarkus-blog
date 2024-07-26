@@ -1,0 +1,22 @@
+[versions]
+flyway = "10.15.0"
+
+kotlin = "2.0.0"
+
+quarkus = "3.12.3"
+
+ktlint = "12.1.1"
+
+[libraries]
+flyway-postgresql = { module = "org.flywaydb:flyway-database-postgresql", version.ref = "flyway" }
+quarkus-bom = { module = "io.quarkus.platform:quarkus-bom", version.ref = "quarkus" }
+
+[plugins]
+flyway = { id = "org.flywaydb.flyway", version.ref = "flyway" }
+
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-plugin-allopen = { id = "org.jetbrains.kotlin.plugin.allopen", version.ref = "kotlin" }
+
+quarkus = { id = "io.quarkus", version.ref = "quarkus" }
+
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
