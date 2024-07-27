@@ -12,7 +12,7 @@ class PostgresTestResource : QuarkusTestResourceLifecycleManager {
         conf["quarkus.datasource.jdbc.url"] = pgvector.jdbcUrl
         conf["quarkus.datasource.username"] = pgvector.username
         conf["quarkus.datasource.password"] = pgvector.password
-        conf["quarkus.hibernate-orm.database.generation"] = "drop-and-create"
+        conf["quarkus.flyway.migrate-at-start"] = "true"
 
         return conf
     }
