@@ -25,4 +25,4 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v3
         with:
-          arguments: test
+          arguments: test --scan
