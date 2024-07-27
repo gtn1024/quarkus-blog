@@ -19,6 +19,9 @@ ktlint_standard_function-naming = disabled
 trim_trailing_whitespace = false
 indent_size = 2
 
+[*.{yaml,yml}]
+indent_size = 2
+
 [*.{java,kt}]
 wildcard_import_limit = 999
 ij_kotlin_name_count_to_use_star_import = 999
