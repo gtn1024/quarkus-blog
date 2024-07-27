@@ -7,9 +7,13 @@ quarkus = "3.12.3"
 
 ktlint = "12.1.1"
 
+testcontainers = "1.20.0"
+
 [libraries]
 flyway-postgresql = { module = "org.flywaydb:flyway-database-postgresql", version.ref = "flyway" }
 quarkus-bom = { module = "io.quarkus.platform:quarkus-bom", version.ref = "quarkus" }
+
+testcontainers-postgresql = { module = "org.testcontainers:postgresql", version.ref = "testcontainers" }
 
 [plugins]
 flyway = { id = "org.flywaydb.flyway", version.ref = "flyway" }

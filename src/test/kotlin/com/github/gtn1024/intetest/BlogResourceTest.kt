@@ -1,7 +1,9 @@
-package com.github.gtn1024.resource
+package com.github.gtn1024.intetest
 
 import com.github.gtn1024.model.Resp
 import com.github.gtn1024.model.entity.BlogEntity
+import com.github.gtn1024.util.PostgresTestResource
+import io.quarkus.test.common.QuarkusTestResource
 import io.quarkus.test.junit.QuarkusTest
 import io.restassured.RestAssured.given
 import io.restassured.common.mapper.TypeRef
@@ -16,6 +18,7 @@ import org.slf4j.LoggerFactory
 import java.util.UUID
 
 @QuarkusTest
+@QuarkusTestResource(value = PostgresTestResource::class, restrictToAnnotatedClass = true)
 class BlogResourceTest {
     @Inject
     lateinit var entityManager: EntityManager
@@ -63,7 +66,7 @@ class BlogResourceTest {
     fun `test get not found`() {
         val id: String
         for (d in data) {
-            logger.info("id: {}", d.id)
+            logger.debug("id: {}", d.id)
         }
         while (true) {
             val uuid = UUID.randomUUID().toString()
@@ -72,7 +75,7 @@ class BlogResourceTest {
                 break
             }
         }
-        logger.info("Generated id: {}", id)
+        logger.debug("Generated id: {}", id)
 
         given()
             .`when`()
@@ -84,7 +87,7 @@ class BlogResourceTest {
     @Test
     fun `test get present`() {
         val id = data[0].id.toString()
-        logger.info("id: {}", id)
+        logger.debug("id: {}", id)
 
         val resp: Resp<BlogEntity> =
             given()
@@ -93,7 +96,7 @@ class BlogResourceTest {
                 .then()
                 .statusCode(200)
                 .extract()
-                .`as`(object : TypeRef<Resp<BlogEntity>>() { })
+                .`as`(object : TypeRef<Resp<BlogEntity>>() {})
 
         assertEquals(data[0].title, resp.data?.title)
         assertEquals(data[0].content, resp.data?.content)
@@ -108,7 +111,7 @@ class BlogResourceTest {
                 .then()
                 .statusCode(200)
                 .extract()
-                .`as`(object : TypeRef<Resp<List<BlogEntity>>>() { })
+                .`as`(object : TypeRef<Resp<List<BlogEntity>>>() {})
 
         assertEquals(data.size, resp.data?.size)
     }
@@ -122,7 +125,7 @@ class BlogResourceTest {
                 .then()
                 .statusCode(200)
                 .extract()
-                .`as`(object : TypeRef<Resp<List<BlogEntity>>>() { })
+                .`as`(object : TypeRef<Resp<List<BlogEntity>>>() {})
 
         assertEquals(2, resp.data?.size)
     }
