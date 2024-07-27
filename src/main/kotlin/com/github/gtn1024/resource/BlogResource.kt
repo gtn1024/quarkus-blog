@@ -18,6 +18,8 @@ import jakarta.ws.rs.core.Response
 import java.util.UUID
 
 @Path("/blog")
+@Consumes("application/json")
+@Produces("application/json")
 class BlogResource
     @Inject
     constructor(
@@ -25,16 +27,12 @@ class BlogResource
     ) {
         @GET
         @Path("{id}")
-        @Consumes("application/json")
-        @Produces("application/json")
         fun get(id: UUID): Response {
             val blog = blogService.get(id)
             return Resp.success(blog)
         }
 
         @GET
-        @Consumes("application/json")
-        @Produces("application/json")
         fun list(
             @QueryParam("page") page: Int = 1,
             @QueryParam("pageSize") pageSize: Int = 10,
@@ -45,8 +43,6 @@ class BlogResource
         }
 
         @POST
-        @Consumes("application/json")
-        @Produces("application/json")
         fun create(blogRequest: BlogRequest): Response {
             blogService.create(blogRequest)
 
@@ -55,8 +51,6 @@ class BlogResource
 
         @PATCH
         @Path("{id}")
-        @Consumes("application/json")
-        @Produces("application/json")
         fun patch(
             @PathParam("id") id: UUID,
             blogRequest: BlogRequest,
@@ -68,8 +62,6 @@ class BlogResource
 
         @PUT
         @Path("{id}")
-        @Consumes("application/json")
-        @Produces("application/json")
         fun put(
             @PathParam("id") id: UUID,
             blogRequest: BlogRequest,
@@ -81,8 +73,6 @@ class BlogResource
 
         @DELETE
         @Path("{id}")
-        @Consumes("application/json")
-        @Produces("application/json")
         fun delete(
             @PathParam("id") id: UUID,
         ): Response {
