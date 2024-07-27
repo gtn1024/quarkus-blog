@@ -6,6 +6,7 @@ import com.github.gtn1024.service.IBlogService
 import jakarta.inject.Inject
 import jakarta.ws.rs.Consumes
 import jakarta.ws.rs.DELETE
+import jakarta.ws.rs.DefaultValue
 import jakarta.ws.rs.GET
 import jakarta.ws.rs.PATCH
 import jakarta.ws.rs.POST
@@ -34,8 +35,8 @@ class BlogResource
 
         @GET
         fun list(
-            @QueryParam("page") page: Int = 1,
-            @QueryParam("pageSize") pageSize: Int = 10,
+            @QueryParam("page") @DefaultValue("1") page: Int,
+            @QueryParam("pageSize") @DefaultValue("10") pageSize: Int,
         ): Response {
             val blogs = blogService.list(page, pageSize, true)
 
