@@ -1,8 +1,6 @@
 package com.github.gtn1024.util
 
 import io.quarkus.test.common.QuarkusTestResourceLifecycleManager
-import jakarta.inject.Inject
-import org.flywaydb.core.Flyway
 import org.testcontainers.containers.PostgreSQLContainer
 
 class PostgresTestResource : QuarkusTestResourceLifecycleManager {

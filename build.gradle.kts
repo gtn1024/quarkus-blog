@@ -34,7 +34,6 @@ dependencies {
     testImplementation("io.quarkus:quarkus-junit5")
     testImplementation("io.rest-assured:rest-assured")
     testImplementation(libs.testcontainers.postgresql)
-
 }
 
 group = "com.github.gtn1024"
