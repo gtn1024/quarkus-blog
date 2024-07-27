@@ -28,7 +28,7 @@ class BlogResource
         @GET
         @Path("{id}")
         fun get(id: UUID): Response {
-            val blog = blogService.get(id)
+            val blog = blogService.get(id) ?: return Resp.notFound()
             return Resp.success(blog)
         }
 

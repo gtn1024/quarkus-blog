@@ -21,6 +21,10 @@ data class Resp<T>(
         ): Response {
             return Response.status(code).entity(Resp(error, null, null)).build()
         }
+
+        fun notFound(): Response {
+            return fail("Not Found", 404)
+        }
     }
 }
 
