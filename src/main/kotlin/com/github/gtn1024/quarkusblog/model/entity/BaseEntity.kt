@@ -1,4 +1,4 @@
-package com.github.gtn1024.model.entity
+package com.github.gtn1024.quarkusblog.model.entity
 
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntityBase
 import jakarta.persistence.Column

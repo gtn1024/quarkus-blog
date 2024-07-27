@@ -1,8 +1,8 @@
-package com.github.gtn1024.intetest
+package com.github.gtn1024.quarkusblog.intetest
 
-import com.github.gtn1024.model.Resp
-import com.github.gtn1024.model.entity.BlogEntity
-import com.github.gtn1024.util.PostgresTestResource
+import com.github.gtn1024.quarkusblog.model.Resp
+import com.github.gtn1024.quarkusblog.model.entity.BlogEntity
+import com.github.gtn1024.quarkusblog.util.PostgresTestResource
 import io.quarkus.test.common.QuarkusTestResource
 import io.quarkus.test.junit.QuarkusTest
 import io.restassured.RestAssured.given

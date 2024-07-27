@@ -1,10 +1,10 @@
-package com.github.gtn1024.service
+package com.github.gtn1024.quarkusblog.service
 
-import com.github.gtn1024.exception.NotFoundException
-import com.github.gtn1024.model.Page
-import com.github.gtn1024.model.Pagination
-import com.github.gtn1024.model.entity.BlogEntity
-import com.github.gtn1024.model.request.BlogRequest
+import com.github.gtn1024.quarkusblog.exception.NotFoundException
+import com.github.gtn1024.quarkusblog.model.Page
+import com.github.gtn1024.quarkusblog.model.Pagination
+import com.github.gtn1024.quarkusblog.model.entity.BlogEntity
+import com.github.gtn1024.quarkusblog.model.request.BlogRequest
 import io.quarkus.panache.common.Sort
 import jakarta.enterprise.context.ApplicationScoped
 import jakarta.transaction.Transactional

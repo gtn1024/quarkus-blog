@@ -1,4 +1,4 @@
-package com.github.gtn1024.model
+package com.github.gtn1024.quarkusblog.model
 
 import jakarta.ws.rs.core.Response
 

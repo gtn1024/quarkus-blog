@@ -1,4 +1,4 @@
-package com.github.gtn1024.exception
+package com.github.gtn1024.quarkusblog.exception
 
 open class AppException(
     override val message: String,

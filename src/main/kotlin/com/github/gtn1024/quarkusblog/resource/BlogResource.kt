@@ -1,8 +1,8 @@
-package com.github.gtn1024.resource
+package com.github.gtn1024.quarkusblog.resource
 
-import com.github.gtn1024.model.Resp
-import com.github.gtn1024.model.request.BlogRequest
-import com.github.gtn1024.service.IBlogService
+import com.github.gtn1024.quarkusblog.model.Resp
+import com.github.gtn1024.quarkusblog.model.request.BlogRequest
+import com.github.gtn1024.quarkusblog.service.IBlogService
 import jakarta.inject.Inject
 import jakarta.ws.rs.Consumes
 import jakarta.ws.rs.DELETE

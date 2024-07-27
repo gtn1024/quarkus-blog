@@ -1,4 +1,4 @@
-package com.github.gtn1024.model.request
+package com.github.gtn1024.quarkusblog.model.request
 
 data class BlogRequest(
     val title: String?,

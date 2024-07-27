@@ -1,7 +1,7 @@
-package com.github.gtn1024.config
+package com.github.gtn1024.quarkusblog.config
 
-import com.github.gtn1024.exception.AppException
-import com.github.gtn1024.model.Resp
+import com.github.gtn1024.quarkusblog.exception.AppException
+import com.github.gtn1024.quarkusblog.model.Resp
 import jakarta.ws.rs.core.Response
 import jakarta.ws.rs.ext.ExceptionMapper
 import jakarta.ws.rs.ext.Provider

@@ -1,4 +1,4 @@
-package com.github.gtn1024.util
+package com.github.gtn1024.quarkusblog.util
 
 import io.quarkus.test.common.QuarkusTestResourceLifecycleManager
 import org.testcontainers.containers.PostgreSQLContainer
