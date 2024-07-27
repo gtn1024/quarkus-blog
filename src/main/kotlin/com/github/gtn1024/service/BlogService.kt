@@ -35,12 +35,12 @@ interface IBlogService {
 }
 
 @ApplicationScoped
+@Transactional
 class BlogService : IBlogService {
     override fun get(id: UUID): BlogEntity? {
         return BlogEntity.findById(id)
     }
 
-    @Transactional
     override fun create(blogRequest: BlogRequest): BlogEntity {
         val (title, content) = blogRequest
         require(!title.isNullOrBlank()) { "Title must not be empty" }
@@ -55,7 +55,6 @@ class BlogService : IBlogService {
         return blog
     }
 
-    @Transactional
     override fun updateMany(
         id: UUID,
         blogRequest: BlogRequest,
@@ -74,7 +73,6 @@ class BlogService : IBlogService {
         return blog
     }
 
-    @Transactional
     override fun updateAll(
         id: UUID,
         blogRequest: BlogRequest,
@@ -92,7 +90,6 @@ class BlogService : IBlogService {
         return blog
     }
 
-    @Transactional
     override fun remove(id: UUID) {
         val blog = BlogEntity.findById(id) ?: throw NotFoundException("Blog $id not found")
 
